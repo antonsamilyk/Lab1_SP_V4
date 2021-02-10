@@ -16,9 +16,11 @@ public class FirstLab {
     public static void main(String[] args) {
             try {
                 String dir = "test2.txt";
+                String out = "output.txt";
+                FileWriter writer = new FileWriter(out);
                 File file = new File(dir);
                 Scanner scanner = new Scanner(file);
-                HashSet<String> mSet = new HashSet<String>();
+                TreeSet<String> mSet = new TreeSet<String>();
                 String myStr;
                 char[] arr = new char[28];
                 boolean flag = false;
@@ -41,8 +43,13 @@ public class FirstLab {
                         mSet.add(myStr);
                     }
                 }
-                for (String s : mSet)
-                    System.out.println(s);
+                for (String s : mSet) {
+                        writer.write(s);
+                        writer.write("\r\n");
+
+                }
+                scanner.close();
+                writer.close();
             }
             catch (Exception e) {
                     System.out.println("File not found!");
